@@ -1,0 +1,41 @@
+//java code
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class numberGuessingGame {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String play = "Yes";
+
+        while (play.equals("Yes")) {
+
+            Random rand = new Random();
+            int randNum = rand.nextInt(100) + 1; // Add 1 to include 100 in the range
+            int guess = -1;
+            int tries = 0;
+
+            while (guess != randNum) {
+                System.out.print("Guess a number between 1 and 100:");
+                guess = sc.nextInt();
+                tries++;
+
+                if (guess == randNum) {
+                    System.out.println("Awesome! you guessed the number");
+                    System.out.println("It only took you " + tries + " guesses!");
+                    System.out.print("Would you like to play again? Yes or No: ");
+                    play = sc.next().toLowerCase();
+
+                } else if (guess > randNum) {
+                    System.out.println("Your guess is too high, try again");
+                } else {
+                    System.out.println("Your guess is too low, try again");
+                }
+
+            }
+
+        }
+        sc.close(); // Closing scanner object outside the while loop
+    }
+}
